@@ -1,0 +1,52 @@
+@use "@angular/material" as mat;
+html {
+  color-scheme: light;
+  @include mat.theme(
+    (
+      color: mat.$rose-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+body {
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+}
+.dark-theme {
+  @include mat.theme(
+    (
+      color: mat.$rose-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+/* You can add global styles to this file, and also import other style files */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

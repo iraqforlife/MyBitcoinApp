@@ -1,0 +1,8 @@
+{
+  "LOGIN": {
+    "TITLE": "Connexion Administrateur",
+    "EMAIL_LABEL": "Entrez votre email",
+    "PASSWORD_LABEL": "Entrez votre mot de passe",
+    "LOGIN_BUTTON": "Se connecter"
+  }
+}

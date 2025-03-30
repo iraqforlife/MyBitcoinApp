@@ -1,0 +1,41 @@
+<div>
+  <h2>{{ "LOGIN.TITLE" | translate }}</h2>
+  <form (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>{{ "LOGIN.EMAIL_LABEL" | translate }}</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.ca"
+        [formControl]="email"
+        name="email"
+        (blur)="updateErrorMessage()"
+        required
+      />
+      @if (email.invalid) {
+      <mat-error>{{ errorMessage() }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ "LOGIN.PASSWORD_LABEL" | translate }}</mat-label>
+      <input
+        matInput
+        [type]="hide() ? 'password' : 'text'"
+        [(ngModel)]="password"
+        name="password"
+        [required]="true"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()"
+      >
+        <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button type="submit">{{ "LOGIN.LOGIN_BUTTON" | translate }}</button>
+  </form>
+</div>
