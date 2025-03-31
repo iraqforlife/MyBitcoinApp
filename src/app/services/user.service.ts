@@ -38,9 +38,8 @@ export class UserService {
     this.http.post('users/login/', body).subscribe({
       next: (response) => {
         if (response) {
-          var loginResponse = response as Login;
+          this.loginResponse = response as Login;
           this.isLogged.set(true);
-          this.loginResponse = loginResponse;
         } else {
           console.error('Unexpected response:', response);
         }

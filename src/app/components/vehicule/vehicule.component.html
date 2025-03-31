@@ -12,7 +12,6 @@
     </select>
   </div>
   @if (isLoading()) {
-
   <div class="spinner"></div>
   } @else if (errorMessage()){
   <div style="color: red">An error occurred: {{ errorMessage() }}</div>

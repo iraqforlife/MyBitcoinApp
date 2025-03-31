@@ -7,6 +7,7 @@ import { RoleGuard } from './guards/role.guard';
 import { TalenViewComponent } from './components/talen-view/talen-view.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
 import { LoginComponent } from './components/login/login.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 export const routes: Routes = [
   {
@@ -37,5 +38,9 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'users-list',
+    component: UserListComponent,
   },
 ];

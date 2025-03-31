@@ -12,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'bit-hodler';
+  title = 'Bitcoin hodler';
   constructor(
     private userService: UserService,
     private translate: TranslateService
