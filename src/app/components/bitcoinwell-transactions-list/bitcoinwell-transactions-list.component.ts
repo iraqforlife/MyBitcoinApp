@@ -10,6 +10,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
+import {
+  TransactionType,
+  TransactionTypeLabels,
+} from '../../enum/transaction-type';
 
 @Component({
   selector: 'app-bitcoinwell-transaction-list',
@@ -20,7 +24,7 @@ export class BitcoinwellTransactionsComponent {
   resource: HttpResourceRef<BitcoinwellTransaction[] | undefined>;
   walletId = signal<string>('');
   pageTitle = 'Bitcoinwell Transactions List';
-  displayedColumns: string[] = ['id', 'amount', 'date', 'status', 'actions'];
+  displayedColumns: string[] = ['date', 'amount', 'type', 'fee', 'actions'];
   constructor(
     private route: ActivatedRoute,
     private service: WalletsService,
@@ -42,6 +46,10 @@ export class BitcoinwellTransactionsComponent {
   error = computed(() => this.resource.error() as HttpErrorResponse);
   errorMessage = computed(() => setErrorMessage(this.error(), 'Bitcoinwallet'));
   isLoading = computed(() => this.resource.isLoading());
+
+  getTypeLabels(type: TransactionType): string {
+    return TransactionTypeLabels[type] || 'Unknown Type';
+  }
 
   openImportDialog() {
     const dialogRef = this.dialog.open(ImportDialogComponent);

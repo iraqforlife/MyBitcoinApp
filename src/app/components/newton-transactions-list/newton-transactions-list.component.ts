@@ -9,6 +9,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { NewtonTransaction } from '../../dto/newton-transaction.dto';
+import {
+  TransactionType,
+  TransactionTypeLabels,
+} from '../../enum/transaction-type';
+import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
 
 @Component({
   selector: 'app-newton-transaction-list',
@@ -19,7 +24,7 @@ export class NewtonTransactionsComponent {
   resource: HttpResourceRef<NewtonTransaction[] | undefined>;
   walletId = signal<string>('');
   pageTitle = 'Newton Transactions List';
-  displayedColumns: string[] = ['id', 'amount', 'date', 'status', 'actions'];
+  displayedColumns: string[] = ['date', 'amount', 'type', 'fee', 'actions'];
   constructor(
     private route: ActivatedRoute,
     private service: WalletsService,
@@ -41,4 +46,43 @@ export class NewtonTransactionsComponent {
   error = computed(() => this.resource.error() as HttpErrorResponse);
   errorMessage = computed(() => setErrorMessage(this.error(), 'Newton'));
   isLoading = computed(() => this.resource.isLoading());
+  getTypeLabels(type: TransactionType): string {
+    return TransactionTypeLabels[type] || 'Unknown Type';
+  }
+  openImportDialog() {
+    const dialogRef = this.dialog.open(ImportDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        const file = result as File;
+
+        this.service.import(this.walletId(), file).subscribe({
+          next: (response) => {
+            if (response) {
+              this.resource.reload();
+              this.snackBar.open('Wallet added successfully!', 'Close', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                horizontalPosition: 'right',
+              });
+            } else {
+              this.snackBar.open('Sum thin wong 2', 'Close', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                horizontalPosition: 'right',
+              });
+            }
+          },
+          error: (err) => {
+            this.snackBar.open('Sum thin wong ', 'Close', {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              horizontalPosition: 'right',
+            });
+          },
+        });
+        // Add logic to handle the new wallet addition
+      }
+    });
+  }
 }
