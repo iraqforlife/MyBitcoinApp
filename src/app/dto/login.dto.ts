@@ -5,6 +5,5 @@ export interface Login {
   token: string;
   firstName: string;
   lastName: string;
-  profilePictureUrl: string;
   expiration: Date;
 }

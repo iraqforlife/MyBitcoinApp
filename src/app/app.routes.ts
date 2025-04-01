@@ -8,6 +8,7 @@ import { TalenViewComponent } from './components/talen-view/talen-view.component
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { WalletsListComponent } from './components/wallets-list/wallets-list.component';
 
 export const routes: Routes = [
   {
@@ -42,5 +43,9 @@ export const routes: Routes = [
   {
     path: 'users-list',
     component: UserListComponent,
+  },
+  {
+    path: 'wallets-list',
+    component: WalletsListComponent,
   },
 ];

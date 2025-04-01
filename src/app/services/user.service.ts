@@ -23,7 +23,27 @@ export class UserService {
   get token() {
     return this.loginResponse?.token;
   }
-
+  get userId() {
+    return this.loginResponse?.id;
+  }
+  get firstName() {
+    return this.loginResponse?.firstName;
+  }
+  get lastName() {
+    return this.loginResponse?.lastName;
+  }
+  get email() {
+    return this.loginResponse?.email;
+  }
+  get expiration() {
+    return this.loginResponse?.expiration;
+  }
+  get role() {
+    return this.loginResponse?.role;
+  }
+  get isAdmin() {
+    return this.loginResponse?.role === Roles.Admin;
+  }
   validateRole(role: Roles): boolean {
     return this.loginResponse?.role === role;
   }
