@@ -3,16 +3,17 @@
     {{ pageTitle }}
   </div>
 
+  <!-- Button to open the dialog for adding a new wallet
   <button mat-raised-button color="primary" (click)="openAddWalletDialog()">
     Add New Wallet
-  </button>
+  </button> -->
 
   @if (isLoading()) {
   <div class="spinner"></div>
   } @else if (errorMessage()) {
   <div style="color: red">An error occurred: {{ errorMessage() }}</div>
-  } @else { @if (wallets().length) {
-  <table mat-table [dataSource]="wallets()" class="mat-elevation-z8">
+  } @else { @if (transactions().length) {
+  <table mat-table [dataSource]="transactions()" class="mat-elevation-z8">
     <!-- Email Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -22,9 +23,7 @@
     <!-- First Name Column -->
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef>Type</th>
-      <td mat-cell *matCellDef="let wallet">
-        {{ getWalletsLabels(wallet.type) }}
-      </td>
+      <td mat-cell *matCellDef="let wallet">type</td>
     </ng-container>
 
     <!-- Last Name Column -->
@@ -45,6 +44,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
   } @else {
-  <div>No wallets found</div>
+  <div>No transaction found</div>
   } }
 </div>

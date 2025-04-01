@@ -11,10 +11,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddWalletDialogComponent } from '../add-wallet-dialog/add-wallet-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Wallets, WalletsLabels } from '../../enum/wallets';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-wallets-list',
-  imports: [MatTableModule, MatButtonModule, MatIconModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './wallets-list.component.html',
 })
 export class WalletsListComponent {

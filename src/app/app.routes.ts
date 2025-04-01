@@ -1,3 +1,4 @@
+import { BitcoinwellTransaction } from './dto/bitcoinwell-transaction.dto';
 import { Routes } from '@angular/router';
 import { VehiculeComponent } from './components/vehicule/vehicule.component';
 import { LoggedComponent } from './components/logged/logged.component';
@@ -9,6 +10,7 @@ import { AdminViewComponent } from './components/admin-view/admin-view.component
 import { LoginComponent } from './components/login/login.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { WalletsListComponent } from './components/wallets-list/wallets-list.component';
+import { BitcoinwellTransactionsComponent } from './components/bitcoinwell-transactions-list/bitcoinwell-transactions-list.component';
 
 export const routes: Routes = [
   {
@@ -47,5 +49,9 @@ export const routes: Routes = [
   {
     path: 'wallets-list',
     component: WalletsListComponent,
+  },
+  {
+    path: 'bitcoinwell-transactions/:walletId',
+    component: BitcoinwellTransactionsComponent,
   },
 ];
