@@ -14,7 +14,6 @@ import { NewtonTransaction } from '../../dto/newton-transaction.dto';
   selector: 'app-newton-transaction-list',
   imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './newton-transactions-list.component.html',
-  styles: ``,
 })
 export class NewtonTransactionsComponent {
   resource: HttpResourceRef<NewtonTransaction[] | undefined>;

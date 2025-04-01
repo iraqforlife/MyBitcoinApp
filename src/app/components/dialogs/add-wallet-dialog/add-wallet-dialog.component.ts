@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { WalletsLabels } from '../../enum/wallets';
-import { WalletTypes } from '../../enum/wallets';
+import { WalletsLabels } from '../../../enum/wallets';
+import { WalletTypes } from '../../../enum/wallets';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';

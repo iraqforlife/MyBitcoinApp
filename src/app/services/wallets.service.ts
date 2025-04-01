@@ -24,6 +24,13 @@ export class WalletsService {
   create(wallet: Wallet) {
     return this.httpClient.post<Wallet>('wallets', wallet);
   }
+  import(walletId: string, file: File) {
+    // Create FormData to send the file
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.httpClient.post(`importer/${walletId}`, formData);
+  }
+
   getBitcoinwellTransactions(walletId: Signal<string>) {
     return httpResource<BitcoinwellTransaction[]>(
       `wallets/GetBitcoinWellTransaction/${walletId()}`

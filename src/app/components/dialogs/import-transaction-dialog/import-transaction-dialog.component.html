@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Select Wallet Type</h1>
+<div mat-dialog-content>
+  <div>
+    <label for="fileInput">Select a file:</label>
+    <input
+      id="fileInput"
+      type="file"
+      (change)="onFileSelected($event)"
+      accept=".csv"
+    />
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="import()">Import</button>
+</div>

@@ -3,10 +3,9 @@
     {{ pageTitle }}
   </div>
 
-  <!-- Button to open the dialog for adding a new wallet
-  <button mat-raised-button color="primary" (click)="openAddWalletDialog()">
-    Add New Wallet
-  </button> -->
+  <button mat-raised-button color="primary" (click)="openImportDialog()">
+    Import Transactions
+  </button>
 
   @if (isLoading()) {
   <div class="spinner"></div>

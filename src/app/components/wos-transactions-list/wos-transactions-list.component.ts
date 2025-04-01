@@ -14,7 +14,6 @@ import { WOSTransaction } from '../../dto/wos-transaction.dto';
   selector: 'app-wos-transaction-list',
   imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './wos-transactions-list.component.html',
-  styles: ``,
 })
 export class WOSTransactionsComponent {
   resource: HttpResourceRef<WOSTransaction[] | undefined>;

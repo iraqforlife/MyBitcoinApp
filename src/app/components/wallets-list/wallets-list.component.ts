@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { WalletsService } from '../../services/wallets.service';
 import { Wallet } from '../../dto/wallet.dto';
 import { MatDialog } from '@angular/material/dialog';
-import { AddWalletDialogComponent } from '../add-wallet-dialog/add-wallet-dialog.component';
+import { AddWalletDialogComponent } from '../dialogs/add-wallet-dialog/add-wallet-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { WalletTypes, WalletsLabels } from '../../enum/wallets';
 import { RouterModule } from '@angular/router';

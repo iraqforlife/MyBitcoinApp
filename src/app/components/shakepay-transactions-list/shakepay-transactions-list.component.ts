@@ -14,7 +14,6 @@ import { ShakepayTransaction } from '../../dto/shakepay-transaction.dto';
   selector: 'app-shakepay-transaction-list',
   imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './shakepay-transactions-list.component.html',
-  styles: ``,
 })
 export class ShakepayTransactionsComponent {
   resource: HttpResourceRef<ShakepayTransaction[] | undefined>;

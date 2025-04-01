@@ -9,12 +9,12 @@ import { setErrorMessage } from '../../utils/error-message';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
 
 @Component({
   selector: 'app-bitcoinwell-transaction-list',
   imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './bitcoinwell-transactions-list.component.html',
-  styles: ``,
 })
 export class BitcoinwellTransactionsComponent {
   resource: HttpResourceRef<BitcoinwellTransaction[] | undefined>;
@@ -42,4 +42,40 @@ export class BitcoinwellTransactionsComponent {
   error = computed(() => this.resource.error() as HttpErrorResponse);
   errorMessage = computed(() => setErrorMessage(this.error(), 'Bitcoinwallet'));
   isLoading = computed(() => this.resource.isLoading());
+
+  openImportDialog() {
+    const dialogRef = this.dialog.open(ImportDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        const file = result as File;
+
+        this.service.import(this.walletId(), file).subscribe({
+          next: (response) => {
+            if (response) {
+              this.snackBar.open('Wallet added successfully!', 'Close', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                horizontalPosition: 'right',
+              });
+            } else {
+              this.snackBar.open('Sum thin wong 2', 'Close', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                horizontalPosition: 'right',
+              });
+            }
+          },
+          error: (err) => {
+            this.snackBar.open('Sum thin wong ', 'Close', {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              horizontalPosition: 'right',
+            });
+          },
+        });
+        // Add logic to handle the new wallet addition
+      }
+    });
+  }
 }
