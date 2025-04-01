@@ -1,4 +1,4 @@
-import { Wallets } from '../enum/wallets';
+import { WalletTypes } from '../enum/wallets';
 
 export interface Wallet {
   id: string | undefined;

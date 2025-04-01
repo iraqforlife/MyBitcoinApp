@@ -1,14 +1,15 @@
-import { Wallets } from '../enum/wallets';
+import { WalletTypes } from '../enum/wallets';
 
 export interface BitcoinwellTransaction {
   id: string;
-  type: Wallets;
+  type: WalletTypes;
   walletId: string;
   date: Date;
   amount: number;
   fee: number;
   categorized: boolean;
   ledgerId: string | null;
+  // specific
   transactionId: string;
   orderType: string;
   network: string;

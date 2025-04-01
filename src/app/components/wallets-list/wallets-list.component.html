@@ -32,8 +32,41 @@
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let wallet">
         <button
+          *ngIf="wallet.type === WalletTypes.Bitcoinwell"
           mat-icon-button
           [routerLink]="['/bitcoinwell-transactions', wallet.id]"
+          aria-label="View Transactions"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button
+          *ngIf="wallet.type === WalletTypes.Newton"
+          mat-icon-button
+          [routerLink]="['/newton-transactions', wallet.id]"
+          aria-label="View Transactions"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button
+          *ngIf="wallet.type === WalletTypes.Ledger"
+          mat-icon-button
+          [routerLink]="['/ledger-transactions', wallet.id]"
+          aria-label="View Transactions"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button
+          *ngIf="wallet.type === WalletTypes.Shakepay"
+          mat-icon-button
+          [routerLink]="['/shakepay-transactions', wallet.id]"
+          aria-label="View Transactions"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button
+          *ngIf="wallet.type === WalletTypes.WOS"
+          mat-icon-button
+          [routerLink]="['/wos-transactions', wallet.id]"
           aria-label="View Transactions"
         >
           <mat-icon>visibility</mat-icon>

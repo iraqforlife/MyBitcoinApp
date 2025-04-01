@@ -10,18 +10,26 @@ import { Wallet } from '../../dto/wallet.dto';
 import { MatDialog } from '@angular/material/dialog';
 import { AddWalletDialogComponent } from '../add-wallet-dialog/add-wallet-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Wallets, WalletsLabels } from '../../enum/wallets';
+import { WalletTypes, WalletsLabels } from '../../enum/wallets';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-wallets-list',
-  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule],
+  imports: [
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterModule,
+    CommonModule,
+  ],
   templateUrl: './wallets-list.component.html',
 })
 export class WalletsListComponent {
   [x: string]: any;
   pageTitle = 'Wallets List';
   WalletsResource: HttpResourceRef<Wallet[] | undefined>;
+  public WalletTypes = WalletTypes; // Expose WalletTypes to the template
   constructor(
     private service: WalletsService,
     private userService: UserService,
@@ -88,7 +96,7 @@ export class WalletsListComponent {
       }
     });
   }
-  getWalletsLabels(type: Wallets): string {
+  getWalletsLabels(type: WalletTypes): string {
     return WalletsLabels[type] || 'Unknown Type';
   }
 }
