@@ -53,6 +53,7 @@ export class BitcoinwellTransactionsComponent {
         this.service.import(this.walletId(), file).subscribe({
           next: (response) => {
             if (response) {
+              this.resource.reload();
               this.snackBar.open('Wallet added successfully!', 'Close', {
                 duration: 3000,
                 verticalPosition: 'bottom',

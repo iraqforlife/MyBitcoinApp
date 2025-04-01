@@ -28,7 +28,7 @@ import { CommonModule } from '@angular/common';
 export class WalletsListComponent {
   [x: string]: any;
   pageTitle = 'Wallets List';
-  WalletsResource: HttpResourceRef<Wallet[] | undefined>;
+  resource: HttpResourceRef<Wallet[] | undefined>;
   public WalletTypes = WalletTypes; // Expose WalletTypes to the template
   constructor(
     private service: WalletsService,
@@ -36,20 +36,16 @@ export class WalletsListComponent {
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {
-    this.WalletsResource = this.service.getAll();
+    this.resource = this.service.getAll();
   }
 
   // Resource signals
   wallets: Signal<Wallet[]> = computed(() => {
-    const currentWallets = this.WalletsResource?.value() ?? ([] as Wallet[]);
-    return this.newWallet()
-      ? [...currentWallets, this.newWallet()!]
-      : currentWallets;
+    return this.resource?.value() ?? ([] as Wallet[]);
   });
-  newWallet = signal<Wallet | undefined>(undefined);
-  error = computed(() => this.WalletsResource.error() as HttpErrorResponse);
+  error = computed(() => this.resource.error() as HttpErrorResponse);
   errorMessage = computed(() => setErrorMessage(this.error(), 'vehicle'));
-  isLoading = computed(() => this.WalletsResource.isLoading());
+  isLoading = computed(() => this.resource.isLoading());
 
   displayedColumns: string[] = ['name', 'type', 'actions'];
 
@@ -68,7 +64,7 @@ export class WalletsListComponent {
         this.service.create(newWallet).subscribe({
           next: (response) => {
             if (response) {
-              this.newWallet.set(response);
+              this.resource.reload(); // Reload the resource to get the updated list of wallets
 
               this.snackBar.open('Wallet added successfully!', 'Close', {
                 duration: 3000,
