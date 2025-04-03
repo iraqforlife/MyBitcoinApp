@@ -15,6 +15,8 @@ import { WOSTransactionsComponent } from './components/wos-transactions-list/wos
 import { NewtonTransactionsComponent } from './components/newton-transactions-list/newton-transactions-list.component';
 import { ShakepayTransactionsComponent } from './components/shakepay-transactions-list/shakepay-transactions-list.component';
 import { LedgerTransactionsComponent } from './components/ledger-transactions-list/ledger-transactions-list.component';
+import { ExodusTransactionsComponent } from './components/exodus-transactions-list/exodus-transactions-list.component';
+import { LedgerListComponent } from './components/ledger-list/ledger-list.component';
 
 export const routes: Routes = [
   {
@@ -55,6 +57,10 @@ export const routes: Routes = [
     component: WalletsListComponent,
   },
   {
+    path: 'ledger-list',
+    component: LedgerListComponent,
+  },
+  {
     path: 'bitcoinwell-transactions/:walletId',
     component: BitcoinwellTransactionsComponent,
   },
@@ -76,5 +82,9 @@ export const routes: Routes = [
   {
     path: 'ledger-transactions/:walletId',
     component: LedgerTransactionsComponent,
+  },
+  {
+    path: 'exodus-transactions/:walletId',
+    component: ExodusTransactionsComponent,
   },
 ];

@@ -14,10 +14,17 @@ import {
   TransactionTypeLabels,
 } from '../../enum/transaction-type';
 import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-wos-transaction-list',
-  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule],
+  imports: [
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterModule,
+    CommonModule,
+  ],
   templateUrl: './wos-transactions-list.component.html',
 })
 export class WOSTransactionsComponent {

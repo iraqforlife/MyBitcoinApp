@@ -71,6 +71,14 @@
         >
           <mat-icon>visibility</mat-icon>
         </button>
+        <button
+          *ngIf="wallet.type === WalletTypes.Exodus"
+          mat-icon-button
+          [routerLink]="['/exodus-transactions', wallet.id]"
+          aria-label="View Transactions"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
       </td>
     </ng-container>
 

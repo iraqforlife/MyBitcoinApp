@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, NgModule, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { WalletsService } from '../../services/wallets.service';
@@ -14,10 +14,17 @@ import {
   TransactionTypeLabels,
 } from '../../enum/transaction-type';
 import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-newton-transaction-list',
-  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule],
+  imports: [
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterModule,
+    CommonModule,
+  ],
   templateUrl: './newton-transactions-list.component.html',
 })
 export class NewtonTransactionsComponent {

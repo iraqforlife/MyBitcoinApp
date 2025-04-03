@@ -8,16 +8,16 @@ import { setErrorMessage } from '../../utils/error-message';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ShakepayTransaction } from '../../dto/shakepay-transaction.dto';
+import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
 import {
   TransactionType,
   TransactionTypeLabels,
 } from '../../enum/transaction-type';
-import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
+import { ExodusTransaction } from '../../dto/exodus-transaction.dto';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-shakepay-transaction-list',
+  selector: 'app-exodus-transaction-list',
   imports: [
     MatTableModule,
     MatButtonModule,
@@ -25,12 +25,12 @@ import { CommonModule } from '@angular/common';
     RouterModule,
     CommonModule,
   ],
-  templateUrl: './shakepay-transactions-list.component.html',
+  templateUrl: './exodus-transactions-list.component.html',
 })
-export class ShakepayTransactionsComponent {
-  resource: HttpResourceRef<ShakepayTransaction[] | undefined>;
+export class ExodusTransactionsComponent {
+  resource: HttpResourceRef<ExodusTransaction[] | undefined>;
   walletId = signal<string>('');
-  pageTitle = 'Shakepay Transactions List';
+  pageTitle = 'Exodus Transactions List';
   displayedColumns: string[] = ['date', 'amount', 'type', 'fee', 'actions'];
   constructor(
     private route: ActivatedRoute,
@@ -44,18 +44,20 @@ export class ShakepayTransactionsComponent {
         this.walletId.set(walletId);
       }
     });
-    this.resource = this.service.GetShakepayTransaction(this.walletId);
+    this.resource = this.service.getExodusTransactions(this.walletId);
   }
   // Resource signals
   transactions = computed(
-    () => this.resource.value() ?? ([] as ShakepayTransaction[])
+    () => this.resource.value() ?? ([] as ExodusTransaction[])
   );
   error = computed(() => this.resource.error() as HttpErrorResponse);
-  errorMessage = computed(() => setErrorMessage(this.error(), 'Shakepay'));
+  errorMessage = computed(() => setErrorMessage(this.error(), 'Exodus'));
   isLoading = computed(() => this.resource.isLoading());
+
   getTypeLabels(type: TransactionType): string {
     return TransactionTypeLabels[type] || 'Unknown Type';
   }
+
   openImportDialog() {
     const dialogRef = this.dialog.open(ImportDialogComponent);
 

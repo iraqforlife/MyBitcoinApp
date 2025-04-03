@@ -7,6 +7,8 @@ import { LedgerTransaction } from '../dto/Ledger-transaction.dto';
 import { NewtonTransaction } from '../dto/newton-transaction.dto';
 import { ShakepayTransaction } from '../dto/shakepay-transaction.dto';
 import { WOSTransaction } from '../dto/wos-transaction.dto';
+import { ExodusTransaction } from '../dto/exodus-transaction.dto';
+import { LedgerTransction } from '../dto/ledger.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +23,14 @@ export class WalletsService {
       `wallets/getUserWallets/${this.userService.userId}`
     );
   }
+  getAllLedgerTransaction() {
+    return httpResource<LedgerTransction[]>(
+      `wallets/getUserLedger/${this.userService.userId}`
+    );
+  }
+  sync() {
+    return this.httpClient.post(`wallets/Sync/${this.userService.userId}`, {});
+  }
   create(wallet: Wallet) {
     return this.httpClient.post<Wallet>('wallets', wallet);
   }
@@ -34,6 +44,11 @@ export class WalletsService {
   getBitcoinwellTransactions(walletId: Signal<string>) {
     return httpResource<BitcoinwellTransaction[]>(
       `wallets/GetBitcoinWellTransaction/${walletId()}`
+    );
+  }
+  getExodusTransactions(walletId: Signal<string>) {
+    return httpResource<ExodusTransaction[]>(
+      `wallets/GetExodusTransaction/${walletId()}`
     );
   }
   GetLedgerTransaction(walletId: Signal<string>) {

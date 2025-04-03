@@ -26,7 +26,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './wallets-list.component.html',
 })
 export class WalletsListComponent {
-  [x: string]: any;
   pageTitle = 'Wallets List';
   resource: HttpResourceRef<Wallet[] | undefined>;
   public WalletTypes = WalletTypes; // Expose WalletTypes to the template
