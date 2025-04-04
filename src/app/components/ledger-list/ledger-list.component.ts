@@ -48,6 +48,7 @@ export class LedgerListComponent {
     'fiat',
     'spot',
     'type',
+    'description',
     'actions',
   ];
 

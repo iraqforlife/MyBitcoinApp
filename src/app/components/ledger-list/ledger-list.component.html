@@ -26,7 +26,7 @@
     <ng-container matColumnDef="fiat">
       <th mat-header-cell *matHeaderCellDef>Fiat amount</th>
       <td mat-cell *matCellDef="let transaction">
-        $ {{ transaction.fiatAmout }}
+        $ {{ transaction.fiatAmout | number : "1.2-2" }}
       </td>
     </ng-container>
     <ng-container matColumnDef="spot">
@@ -39,6 +39,12 @@
       <th mat-header-cell *matHeaderCellDef>Type</th>
       <td mat-cell *matCellDef="let transaction">
         {{ getLabels(transaction.type) }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>description</th>
+      <td mat-cell *matCellDef="let transaction">
+        {{ transaction.description }}
       </td>
     </ng-container>
     <ng-container matColumnDef="actions">
