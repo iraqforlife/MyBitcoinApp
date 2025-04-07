@@ -1,14 +1,15 @@
-<h1 mat-dialog-title>Add a new wallet</h1>
+<h1 mat-dialog-title>Update Transaction type</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Wallet Type</mat-label>
+    <mat-label>Transaction Type</mat-label>
     <mat-select
-      [formControl]="selectedWalletType"
-      name="walletName"
+      [formControl]="selectedTransactionType"
+      name="transactionType"
       [required]="true"
+      [value]="8"
     >
-      <mat-option *ngFor="let wallet of walletTypes" [value]="wallet">
-        {{ wallet }}
+      <mat-option *ngFor="let type of transactionTypes" [value]="type">
+        {{ type }}
       </mat-option>
     </mat-select>
     @if (walletName.invalid) {

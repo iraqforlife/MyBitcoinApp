@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ShakepayTransaction } from '../../dto/shakepay-transaction.dto';
 import {
-  TransactionType,
+  TransactionTypes,
   TransactionTypeLabels,
 } from '../../enum/transaction-type';
 import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
@@ -53,7 +53,7 @@ export class ShakepayTransactionsComponent {
   error = computed(() => this.resource.error() as HttpErrorResponse);
   errorMessage = computed(() => setErrorMessage(this.error(), 'Shakepay'));
   isLoading = computed(() => this.resource.isLoading());
-  getTypeLabels(type: TransactionType): string {
+  getTypeLabels(type: TransactionTypes): string {
     return TransactionTypeLabels[type] || 'Unknown Type';
   }
   openImportDialog() {

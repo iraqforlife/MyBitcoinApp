@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { WOSTransaction } from '../../dto/wos-transaction.dto';
 import {
-  TransactionType,
+  TransactionTypes,
   TransactionTypeLabels,
 } from '../../enum/transaction-type';
 import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
@@ -55,7 +55,7 @@ export class WOSTransactionsComponent {
     setErrorMessage(this.error(), 'Wallet of Satoshi')
   );
   isLoading = computed(() => this.resource.isLoading());
-  getTypeLabels(type: TransactionType): string {
+  getTypeLabels(type: TransactionTypes): string {
     return TransactionTypeLabels[type] || 'Unknown Type';
   }
   openImportDialog() {

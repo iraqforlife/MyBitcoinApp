@@ -1,3 +1,4 @@
+import { WalletsListComponent } from './../wallets-list/wallets-list.component';
 import { Component, computed, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,10 +11,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { LedgerTransaction } from '../../dto/Ledger-transaction.dto';
 import {
-  TransactionType,
+  TransactionTypes,
   TransactionTypeLabels,
 } from '../../enum/transaction-type';
 import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
+import { UpdateTransactionDialogComponent } from '../dialogs/update-transaction-dialog/update-transaction-dialog.component';
 
 @Component({
   selector: 'app-ledger-transaction-list',
@@ -83,7 +85,47 @@ export class LedgerTransactionsComponent {
       }
     });
   }
-  getTypeLabels(type: TransactionType): string {
+
+  openUpdateTransactionDialog() {
+    const dialogRef = this.dialog.open(UpdateTransactionDialogComponent, {
+      data: { type: 0 },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('New wallet added:', result); /*
+          this.service.create().subscribe({
+            next: (response) => {
+              if (response) {
+                this.resource.reload(); // Reload the resource to get the updated list of wallets
+
+                this.snackBar.open('Wallet added successfully!', 'Close', {
+                  duration: 3000,
+                  verticalPosition: 'bottom',
+                  horizontalPosition: 'right',
+                });
+              } else {
+                this.snackBar.open('Sum thin wong 2', 'Close', {
+                  duration: 3000,
+                  verticalPosition: 'bottom',
+                  horizontalPosition: 'right',
+                });
+              }
+            },
+            error: (err) => {
+              this.snackBar.open('Sum thin wong ', 'Close', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                horizontalPosition: 'right',
+              });
+            },
+          });
+*/
+        // Add logic to handle the new wallet addition
+      }
+    });
+  }
+  getTypeLabels(type: TransactionTypes): string {
     return TransactionTypeLabels[type] || 'Unknown Type';
   }
 }

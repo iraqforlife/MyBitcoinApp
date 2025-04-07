@@ -37,8 +37,12 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let wallet">
-        <button mat-icon-button aria-label="View Transactions">
-          <mat-icon>visibility</mat-icon>
+        <button
+          mat-icon-button
+          aria-label="View Transactions"
+          (click)="openUpdateTransactionDialog()"
+        >
+          <mat-icon>edit</mat-icon>
         </button>
       </td>
     </ng-container>

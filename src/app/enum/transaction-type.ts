@@ -1,4 +1,4 @@
-export enum TransactionType {
+export enum TransactionTypes {
   Buy = 0,
   Sent = 1,
   Gift = 2,
@@ -9,14 +9,14 @@ export enum TransactionType {
   TransferSell = 7,
   NotSet = 8,
 }
-export const TransactionTypeLabels: { [key in TransactionType]: string } = {
-  [TransactionType.Buy]: 'Buy',
-  [TransactionType.Sent]: 'Sent',
-  [TransactionType.Gift]: 'Gift',
-  [TransactionType.Lost]: 'Lost',
-  [TransactionType.Income]: 'Income',
-  [TransactionType.Transfer]: 'Transfer',
-  [TransactionType.BuyTransfer]: 'Buy & Transfer',
-  [TransactionType.TransferSell]: 'Transfer & Sell',
-  [TransactionType.NotSet]: 'Not Set',
+export const TransactionTypeLabels: { [key in TransactionTypes]: string } = {
+  [TransactionTypes.Buy]: 'Buy',
+  [TransactionTypes.Sent]: 'Sent',
+  [TransactionTypes.Gift]: 'Gift',
+  [TransactionTypes.Lost]: 'Lost',
+  [TransactionTypes.Income]: 'Income',
+  [TransactionTypes.Transfer]: 'Transfer',
+  [TransactionTypes.BuyTransfer]: 'Buy & Transfer',
+  [TransactionTypes.TransferSell]: 'Transfer & Sell',
+  [TransactionTypes.NotSet]: 'Not Set',
 };

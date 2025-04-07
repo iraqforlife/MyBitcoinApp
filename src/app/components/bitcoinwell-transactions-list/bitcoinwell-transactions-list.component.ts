@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ImportDialogComponent } from '../dialogs/import-transaction-dialog/import-transaction-dialog.component';
 import {
-  TransactionType,
+  TransactionTypes,
   TransactionTypeLabels,
 } from '../../enum/transaction-type';
 
@@ -47,7 +47,7 @@ export class BitcoinwellTransactionsComponent {
   errorMessage = computed(() => setErrorMessage(this.error(), 'Bitcoinwallet'));
   isLoading = computed(() => this.resource.isLoading());
 
-  getTypeLabels(type: TransactionType): string {
+  getTypeLabels(type: TransactionTypes): string {
     return TransactionTypeLabels[type] || 'Unknown Type';
   }
 

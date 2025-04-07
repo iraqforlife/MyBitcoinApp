@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 import { LedgerTransction } from '../../dto/ledger.dto';
 import { transition } from '@angular/animations';
 import {
-  TransactionType,
+  TransactionTypes,
   TransactionTypeLabels,
 } from '../../enum/transaction-type';
 
@@ -67,7 +67,7 @@ export class LedgerListComponent {
       },
     });
   }
-  getLabels(type: TransactionType): string {
+  getLabels(type: TransactionTypes): string {
     return TransactionTypeLabels[type] || 'Unknown Type';
   }
 }
