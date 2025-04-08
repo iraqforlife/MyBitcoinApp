@@ -5,8 +5,6 @@ import { LoggedComponent } from './components/logged/logged.component';
 import { authGuard as AuthGuard } from './guards/auth.guard';
 import { Roles } from './enum/roles';
 import { RoleGuard } from './guards/role.guard';
-import { TalenViewComponent } from './components/talen-view/talen-view.component';
-import { AdminViewComponent } from './components/admin-view/admin-view.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { WalletsListComponent } from './components/wallets-list/wallets-list.component';
@@ -31,7 +29,7 @@ export const routes: Routes = [
     path: 'logged',
     component: LoggedComponent,
     canActivate: [AuthGuard],
-  },
+  } /*
   {
     path: 'admin',
     component: AdminViewComponent,
@@ -43,7 +41,7 @@ export const routes: Routes = [
     component: TalenViewComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: { role: Roles.Talen },
-  },
+  },*/,
   {
     path: 'login',
     component: LoginComponent,
